@@ -2,7 +2,6 @@
 
 import {
   Address,
-  Identity,
   Name,
 } from "@coinbase/onchainkit/identity";
 
@@ -21,7 +20,6 @@ import {
   InputRightElement,
   Stack,
   useColorModeValue,
-  HStack,
   Avatar,
   AvatarBadge,
   IconButton,

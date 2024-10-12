@@ -1,4 +1,4 @@
-import { Flex, Text, Avatar, useColorMode, IconButton, useMediaQuery, Heading, Box } from "@chakra-ui/react";
+import { Flex, Avatar, useColorMode, IconButton, useMediaQuery, Heading, Box } from "@chakra-ui/react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { useState } from "react";
 import WalletSection from "../features/WalletSection";

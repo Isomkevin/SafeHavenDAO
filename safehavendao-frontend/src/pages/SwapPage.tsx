@@ -1,4 +1,4 @@
-import { Box, Heading, VStack } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import SwapComponent from "../components/features/Swap";
 
 export default function SwapPage() {

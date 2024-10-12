@@ -11,10 +11,11 @@ import {
   WalletDropdown,
   WalletDropdownDisconnect,
 } from "@coinbase/onchainkit/wallet";
-import { Flex, useMediaQuery, Text } from "@chakra-ui/react";
+// import { Flex, useMediaQuery} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 export default function WalletSection() {
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  // const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   return (
     <Flex align="center" justify="space-between">

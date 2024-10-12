@@ -1,9 +1,14 @@
 import { VStack, Box, Button, Text, Flex } from "@chakra-ui/react";
 
-export default function WalletStatus({ balance, currency }) {
+interface WalletStatusProps {
+  balance: number | string;
+  currency: string;
+}
+
+export default function WalletStatus({ balance, currency }: WalletStatusProps) {
   return (
     <VStack
-      spacing={{ base: 4, md: 6 }} // Responsive spacing
+      spacing={{ base: 4, md: 6 }}
       p={{ base: 4, md: 8 }}
       className="wallet-status"
       borderRadius="lg"

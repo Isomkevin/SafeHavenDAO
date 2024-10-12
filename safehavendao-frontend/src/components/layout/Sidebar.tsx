@@ -1,5 +1,7 @@
-import { Box, VStack, IconButton, Icon, Text, HStack } from "@chakra-ui/react";
+
+import { Box, VStack, IconButton, Text, HStack, IconButtonProps } from "@chakra-ui/react";
 import { FiHome, FiSettings, FiShuffle } from "react-icons/fi";
+import { IconType } from "react-icons";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@chakra-ui/react";
 
@@ -33,18 +35,25 @@ export default function Sidebar() {
   );
 }
 
-function SidebarItem({ to, icon, label }: { to: string; icon: any; label: string }) {
+interface SidebarItemProps extends Omit<IconButtonProps, 'aria-label' | 'icon'> {
+  to: string;
+  icon: IconType;
+  label: string;
+}
+
+function SidebarItem({ to, icon: IconComponent, label, ...rest }: SidebarItemProps) {
   return (
     <Link to={to}>
       <IconButton
         as="div"
         aria-label={label}
-        icon={<Icon as={icon} />}
+        icon={<IconComponent />}
         size="lg"
         variant="ghost"
         color="white"
         _hover={{ bg: "whiteAlpha.300", transition: "0.3s" }}
         _focus={{ boxShadow: "0px 0px 10px 0px #fff" }}
+        {...rest}
       />
       <Text color="white" fontSize="xs" textAlign="center">
         {label}

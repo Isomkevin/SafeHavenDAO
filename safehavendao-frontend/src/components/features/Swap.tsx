@@ -1,8 +1,6 @@
+import { useEffect, useState, useCallback } from "react";
 import {
-  Address,
   Avatar,
-  EthBalance,
-  Identity,
   Name,
 } from "@coinbase/onchainkit/identity";
 import {
@@ -18,72 +16,58 @@ import {
 } from "@coinbase/onchainkit/wallet";
 import { useAccount } from "wagmi";
 import { type Token } from "@coinbase/onchainkit/token";
-import { Flex, VStack, Spinner, Text, useToast } from "@chakra-ui/react";
+import { VStack, Spinner, useToast } from "@chakra-ui/react";
 import { setOnchainKitConfig } from "@coinbase/onchainkit";
 import { getTokens } from "@coinbase/onchainkit/api";
-import { useCallback, useEffect, useState } from "react";
 
 // Token Fetching Hook
-const useFetchTokens = (setTokensSelect: (tokens: Token[]) => void) => {
-  const toast = useToast(); // For displaying errors
-  const fetchTokens = async () => {
+const useFetchTokens = () => {
+  const [tokens, setTokens] = useState<Token[]>([]);
+  const toast = useToast();
+
+  const fetchTokens = useCallback(async () => {
     try {
-      const tokens = await getTokens();
-      if ("error" in tokens) {
+      const fetchedTokens = await getTokens();
+      if ("error" in fetchedTokens) {
         toast({
           title: "Error fetching tokens.",
-          description: tokens.error,
+          description: fetchedTokens.error,
           status: "error",
           duration: 5000,
           isClosable: true,
         });
         return;
       }
-      setTokensSelect(tokens);
+      setTokens(fetchedTokens);
     } catch (error) {
       toast({
         title: "Error.",
-        description: "Failed to fetch tokens.",
+        description: `Failed to fetch tokens. ${error}`,
         status: "error",
         duration: 5000,
         isClosable: true,
       });
     }
-  };
+  }, [toast]);
 
   useEffect(() => {
     fetchTokens();
-  }, []);
+  }, [fetchTokens]);
+
+  return tokens;
 };
 
 export default function SwapComponents() {
   const API_KEY = import.meta.env.VITE_PUBLIC_ONCHAINKIT_API_KEY;
-
-  const [tokenSelect, setTokensSelect] = useState<Token[]>([]);
   const { address } = useAccount();
-  const [loading, setLoading] = useState<boolean>(true);
+  const tokens = useFetchTokens();
 
   setOnchainKitConfig({ apiKey: API_KEY });
 
-  // Fetch tokens using the custom hook
-  useFetchTokens(setTokensSelect);
-
-  const handleChange = useCallback((value: string) => {
-    const getData = async (value: string) => {
-      const response = await getTokens({ search: value });
-      if ("error" in response) {
-        console.error(response.error);
-        return;
-      }
-      setTokensSelect(response); // Update tokens based on search
-    };
-    getData(value);
-  }, []);
-
   // Map tokens for swapping
   const swappableTokens: Token[] =
-    tokenSelect.length > 0
-      ? tokenSelect.map((token) => ({
+    tokens.length > 0
+      ? tokens.map((token) => ({
           name: token.name,
           address: token.address,
           symbol: token.symbol,
@@ -105,8 +89,7 @@ export default function SwapComponents() {
 
   return address ? (
     <VStack align="left">
-      {/* Check if tokens are being fetched */}
-      {tokenSelect.length === 0 && (
+      {tokens.length === 0 && (
         <Spinner size="lg" label="Fetching tokens..." />
       )}
 

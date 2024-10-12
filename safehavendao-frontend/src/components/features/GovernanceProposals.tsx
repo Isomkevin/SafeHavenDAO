@@ -1,6 +1,29 @@
 import { VStack, HStack, Button, Progress, Text, Box } from "@chakra-ui/react";
 
-export default function GovernanceProposals({ proposals }) {
+// Define the structure of a proposal
+interface Proposal {
+  id: string;
+  title: string;
+  description: string;
+  votes: number;
+  totalVotes: number;
+  timeRemaining: string;
+}
+
+// Define the props for the GovernanceProposals component
+interface GovernanceProposalsProps {
+  proposals: Proposal[];
+}
+
+export default function GovernanceProposals({ proposals }: GovernanceProposalsProps) {
+  // Implement the handleVote function
+  const handleVote = (proposalId: string, voteType: 'for' | 'against') => {
+    // Implement your voting logic here
+    console.log(`Voted ${voteType} for proposal ${proposalId}`);
+    alert("This feature is currently under development")
+    // You might want to update the state or call an API here
+  };
+
   return (
     <VStack
       className="governance-proposals"
@@ -29,7 +52,7 @@ export default function GovernanceProposals({ proposals }) {
 
           <Progress
             mt={2}
-            value={proposal.votes / proposal.totalVotes * 100}
+            value={(proposal.votes / proposal.totalVotes) * 100}
             size="sm"
             colorScheme="blue"
             borderRadius="lg"
