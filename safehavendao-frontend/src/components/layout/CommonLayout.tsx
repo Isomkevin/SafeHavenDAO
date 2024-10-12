@@ -30,8 +30,9 @@ export default function Layout({ children }: LayoutProps) {
         </Box>
       </Flex>
       {/* Footer */}
+      
       <Box as="footer" mb="4em" bg="gray.700" color="white" py={4} textAlign="center">
-        <Text>SafeHavenDAO &copy; {new Date().getFullYear()}</Text>
+        <Text>SafeHavenDAO &copy; {new Date().getFullYear()}. All rights reserved.</Text>
       </Box>
     </Flex>
   );

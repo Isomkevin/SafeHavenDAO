@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
+import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
 import WalletSection from "./WalletSection";
-
 
 import Logo from "./Logo";
 
@@ -77,11 +76,11 @@ const MenuLinks = ({ isOpen }) => {
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/how">How It works </MenuItem>
-        <MenuItem to="/faetures">Features </MenuItem>
-        <MenuItem to="/pricing">Pricing </MenuItem>
-        <MenuItem to="/signup" isLast>
+        <MenuItem to="/features">Features </MenuItem>
+        <MenuItem to="/profile">Profile </MenuItem>
+        <MenuItem to="#" isLast>
           {/* WalletSection - Always visible */}
-        <WalletSection />
+          <WalletSection />
         </MenuItem>
       </Stack>
     </Box>
@@ -96,7 +95,7 @@ const NavBarContainer = ({ children, ...props }) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={8}
+      mb={2}
       p={8}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["white", "white", "primary.700", "primary.700"]}
