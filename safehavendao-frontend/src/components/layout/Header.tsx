@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
-import WalletSection from "./WalletSection";
+import WalletSection from "../features/WalletSection";
 
-import Logo from "./Logo";
+import Logo from "../features/Logo";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -77,7 +77,7 @@ const MenuLinks = ({ isOpen }) => {
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/how">How It works </MenuItem>
         <MenuItem to="/features">Features </MenuItem>
-        <MenuItem to="/profile">Profile </MenuItem>
+        <MenuItem to="/profile">Your Profile </MenuItem>
         <MenuItem to="#" isLast>
           {/* WalletSection - Always visible */}
           <WalletSection />
