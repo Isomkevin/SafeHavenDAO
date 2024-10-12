@@ -1,6 +1,6 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
-import TopNavbar from "../features/Header";
+import TopNavbar from "./Header";
 import { ReactNode } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
 

@@ -1,12 +1,24 @@
 'use client'
 
 import {
+  Address,
+  Identity,
+  Name,
+} from "@coinbase/onchainkit/identity";
+
+import {
+  ConnectWallet,
+} from "@coinbase/onchainkit/wallet";
+
+import {
   Button,
   Flex,
   FormControl,
   FormLabel,
   Heading,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
   useColorModeValue,
   HStack,
@@ -14,10 +26,15 @@ import {
   AvatarBadge,
   IconButton,
   Center,
-} from '@chakra-ui/react'
-import { SmallCloseIcon } from '@chakra-ui/icons'
+} from '@chakra-ui/react';
+import { SmallCloseIcon } from '@chakra-ui/icons';
+import { useState } from "react";
 
 export default function UserProfileEdit() {
+  const [show, setShow] = useState(false)
+  const handleClick = () => setShow(!show)
+  const changePhoneNumber = () => alert("This feature is under development")
+
   return (
     <Flex
       minH={'100vh'}
@@ -34,7 +51,7 @@ export default function UserProfileEdit() {
         p={6}
         my={12}>
         <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
-          User Profile Edit
+          User Profile
         </Heading>
         <FormControl id="userName">
           <FormLabel>User Icon</FormLabel>
@@ -75,11 +92,48 @@ export default function UserProfileEdit() {
         </FormControl>
         <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
-          <Input
-            placeholder="password"
-            _placeholder={{ color: 'gray.500' }}
-            type="password"
-          />
+          <InputGroup size='md'>
+            <Input
+              pr='4.5rem'
+              type={show ? 'text' : 'password'}
+              placeholder='Enter password'
+            />
+            <InputRightElement width='4.5rem'>
+              <Button h='1.75rem' size='sm' onClick={handleClick}>
+                {show ? 'Hide' : 'Show'}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+        </FormControl>
+        <FormControl id="WalletEnsName">
+          <FormLabel>Wallet ENS name</FormLabel>
+          <ConnectWallet>
+            <Name />
+          </ConnectWallet>
+        </FormControl>
+        <FormControl id="WalletAddressName">
+          <FormLabel>Wallet Address Name</FormLabel>
+          <ConnectWallet>
+            <Address isSliced={false} />
+          </ConnectWallet>
+        </FormControl>
+        <FormControl id="phonenumber">
+          <FormLabel>Linked Phone Number</FormLabel>
+          <InputGroup size='md'>
+            <Input
+              pr='4.5rem'
+              placeholder="+1xxxxxxxxx"
+              _placeholder={{ color: 'gray.500' }}
+              type="text"
+              value={"+254758750620"}
+              disabled={true}
+            />
+            <InputRightElement width='4.5rem'>
+              <Button h='1.75rem' size='sm' onClick={changePhoneNumber}>
+                Change
+              </Button>
+            </InputRightElement>
+          </InputGroup>
         </FormControl>
         <Stack spacing={6} direction={['column', 'row']}>
           <Button
