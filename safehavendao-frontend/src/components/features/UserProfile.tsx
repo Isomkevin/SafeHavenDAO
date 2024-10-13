@@ -45,6 +45,7 @@ export default function UserProfileEdit() {
         w={'full'}
         maxW={'md'}
         bg={useColorModeValue('white', 'gray.700')}
+        color={useColorModeValue('gray.800', 'white')}
         rounded={'xl'}
         boxShadow={'lg'}
         p={6}

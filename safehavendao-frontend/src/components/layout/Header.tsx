@@ -12,10 +12,12 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 
   return (
     <NavBarContainer {...props}>
-      <Logo
-        w="100px"
-        color={["white", "white", "primary.500", "primary.500"]}
-      />
+      <Flex align="center">
+        <Logo
+          w={["100px", "120px", "140px", "160px"]}
+          color={["white", "white", "primary.500", "primary.500"]}
+        />
+      </Flex>
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} />
     </NavBarContainer>
@@ -85,7 +87,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ isOpen }) => {
       flexBasis={{ base: "100%", md: "auto" }}
     >
       <Stack
-        spacing={8}
+        spacing={[4, 6, 8]}
         align="center"
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={["column", "row", "row", "row"]}
@@ -111,7 +113,7 @@ const NavBarContainer: React.FC<FlexProps> = ({ children, ...props }) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      p={8}
+      p={[4, 6, 8]}
       bg={["gray.500", "gray.500", "gray.500", "gray.500"]}
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
