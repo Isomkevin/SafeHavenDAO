@@ -5,7 +5,7 @@ export default function LandingPage() {
   return (
     <Box minH="100vh" bgGradient="linear(to-b, blue.100, white)">
       {/* Main Section */}
-      <Box as="main" px={8} py={16} maxW="1200px" mx="auto">
+      <Box as="main" px={1} py={1} maxW="1200px" mx="auto">
         {/* Hero Section */}
         <VStack spacing={8} textAlign="center" mb={16}>
           <Heading as="h2" fontSize="4xl" fontWeight="bold">
