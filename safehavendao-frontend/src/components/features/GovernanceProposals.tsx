@@ -1,7 +1,7 @@
 import { VStack, HStack, Button, Progress, Text, Box } from "@chakra-ui/react";
 
 // Define the structure of a proposal
-interface Proposal {
+export interface Proposal {
   id: string;
   title: string;
   description: string;
