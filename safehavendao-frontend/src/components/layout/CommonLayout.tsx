@@ -18,7 +18,7 @@ export default function Layout({ children }: LayoutProps) {
         <Sidebar />
         <Box
           as="main"
-          mt="1em"
+          mt="0.25em"
           ml={isMobile ? 0 : "64px"} // No sidebar on mobile, margin for desktop
           flexGrow={1}
           p={isMobile ? 3 : 5} // Adjust padding based on screen size

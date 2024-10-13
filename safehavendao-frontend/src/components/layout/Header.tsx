@@ -111,7 +111,6 @@ const NavBarContainer: React.FC<FlexProps> = ({ children, ...props }) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={2}
       p={8}
       bg={["gray.500", "gray.500", "gray.500", "gray.500"]}
       color={["white", "white", "primary.700", "primary.700"]}

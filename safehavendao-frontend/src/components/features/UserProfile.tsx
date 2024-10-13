@@ -40,6 +40,7 @@ export default function UserProfileEdit() {
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack
+        as="form"
         spacing={4}
         w={'full'}
         maxW={'md'}
@@ -112,7 +113,7 @@ export default function UserProfileEdit() {
         <FormControl id="WalletAddressName">
           <FormLabel>Wallet Address Name</FormLabel>
           <ConnectWallet>
-            <Address isSliced={false} />
+            <Address isSliced={true} />
           </ConnectWallet>
         </FormControl>
         <FormControl id="phonenumber">
