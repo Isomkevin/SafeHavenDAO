@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
           flexGrow={1}
           p={isMobile ? 3 : 5} // Adjust padding based on screen size
           bg="#141E30"
-          color="gray"
+          color="red"
           overflow="auto"
         >
           {children}
