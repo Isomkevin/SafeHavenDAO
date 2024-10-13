@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
+import { Link, Box, Flex, Text, Stack, FlexProps } from "@chakra-ui/react";
 import WalletSection from "../features/WalletSection";
-
 import Logo from "../features/Logo";
 
-const NavBar = (props) => {
+type NavBarProps = FlexProps
+
+const NavBar: React.FC<NavBarProps> = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -43,7 +44,12 @@ const MenuIcon = () => (
   </svg>
 );
 
-const MenuToggle = ({ toggle, isOpen }) => {
+interface MenuToggleProps {
+  toggle: () => void;
+  isOpen: boolean;
+}
+
+const MenuToggle: React.FC<MenuToggleProps> = ({ toggle, isOpen }) => {
   return (
     <Box display={{ base: "block", md: "none" }} onClick={toggle}>
       {isOpen ? <CloseIcon /> : <MenuIcon />}
@@ -51,7 +57,14 @@ const MenuToggle = ({ toggle, isOpen }) => {
   );
 };
 
-const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
+interface MenuItemProps {
+  children: React.ReactNode;
+  isLast?: boolean;
+  to?: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const MenuItem: React.FC<MenuItemProps> = ({ children, isLast = false, to = "/", ...rest }) => {
   return (
     <Link href={to}>
       <Text display="block" {...rest}>
@@ -61,7 +74,11 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   );
 };
 
-const MenuLinks = ({ isOpen }) => {
+interface MenuLinksProps {
+  isOpen: boolean;
+}
+
+const MenuLinks: React.FC<MenuLinksProps> = ({ isOpen }) => {
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -75,11 +92,10 @@ const MenuLinks = ({ isOpen }) => {
         pt={[4, 4, 0, 0]}
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/how">How It works </MenuItem>
-        <MenuItem to="/features">Features </MenuItem>
-        <MenuItem to="/profile">Your Profile </MenuItem>
+        <MenuItem to="/how">How It works</MenuItem>
+        <MenuItem to="/features">Features</MenuItem>
+        <MenuItem to="/profile">Your Profile</MenuItem>
         <MenuItem to="#" isLast>
-          {/* WalletSection - Always visible */}
           <WalletSection />
         </MenuItem>
       </Stack>
@@ -87,7 +103,7 @@ const MenuLinks = ({ isOpen }) => {
   );
 };
 
-const NavBarContainer = ({ children, ...props }) => {
+const NavBarContainer: React.FC<FlexProps> = ({ children, ...props }) => {
   return (
     <Flex
       as="nav"
