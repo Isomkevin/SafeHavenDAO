@@ -18,12 +18,12 @@ export default function Layout({ children }: LayoutProps) {
         <Sidebar />
         <Box
           as="main"
-          mt="3em"
+          mt="2em"
           ml={isMobile ? 0 : "64px"} // No sidebar on mobile, margin for desktop
           flexGrow={1}
           p={isMobile ? 3 : 5} // Adjust padding based on screen size
           bg="#141E30"
-          color="white"
+          color="gray"
           overflow="auto"
         >
           {children}
