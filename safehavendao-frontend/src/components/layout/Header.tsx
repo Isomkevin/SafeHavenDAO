@@ -113,7 +113,8 @@ const NavBarContainer: React.FC<FlexProps> = ({ children, ...props }) => {
       w="100%"
       mb={2}
       p={8}
-      bg={["primary.500", "primary.500", "transparent", "transparent"]}
+      bg={["gray.500", "gray.500", "transparent", "transparent"]}
+      // bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
     >
