@@ -28,6 +28,7 @@ export const handleUssd = async (req, res) => {
 
     try {
       await newMapping.save();
+      console.log(`ENS Name ${ensBasename} linked mobile number ${phoneNumber}`);
       response = `END Your ENS ${ensBasename} has been linked to your number ${phoneNumber}.`;
     } catch (error) {
       response = "END Error linking ENS to phone number. Please try again.";

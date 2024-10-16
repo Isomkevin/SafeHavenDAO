@@ -1,7 +1,7 @@
 // Importing express using ES modules syntax
 import express from "express";
 import cors from "cors";
-import { handleUssd } from "../controllers/ussdController.js"; // Updated to use ES import
+import { handleUssd } from "../controllers/ussdController3.js"; // Updated to use ES import
 
 const router = express.Router();
 router.use(cors());
