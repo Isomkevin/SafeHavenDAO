@@ -1,0 +1,39 @@
+// Importing necessary modules using ES modules syntax
+import Africastalking from "africastalking";
+import EnsMapping from "../models/ensMapping.js";
+
+// Initializing the Africastalking SDK
+// const africastalking = Africastalking({
+//   apiKey: process.env.AFRICASTALKING_API_KEY,
+//   username: process.env.AFRICASTALKING_USERNAME,
+// });
+
+// Handling USSD request
+export const handleUssd = async (req, res) => {
+  const { text, phoneNumber } = req.body;
+
+  let response;
+
+  if (text === "") {
+    // First interaction
+    response = "CON Welcome to ENS to Phone Mapper\nEnter your ENS Basename";
+  } else {
+    const ensBasename = text.trim();
+
+    // Store the ENS mapping to the database
+    const newMapping = new EnsMapping({
+      phoneNumber,
+      ensBasename,
+    });
+
+    try {
+      await newMapping.save();
+      response = `END Your ENS ${ensBasename} has been linked to your number ${phoneNumber}.`;
+    } catch (error) {
+      response = "END Error linking ENS to phone number. Please try again.";
+    }
+  }
+
+  console.log(response); // Log response before sending
+  res.send(response);
+};

@@ -1,0 +1,19 @@
+{
+  "name": "safehavendao-backend",
+  "version": "1.0.0",
+  "description": "Backend for ENS Basename mapping using USSD and SMS with Africa's Talking",
+  "license": "MIT",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "africastalking": "^0.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "4.21.1",
+    "mongoose": "^5.12.3"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "safehavendao-fullstack-app",
+    "version": "1.0.0",
+    "description": "Your project description",
+    "main": "server.js",
+    "scripts": {
+        "start": "concurrently \"npm run server\" \"npm run client\"",
+        "server": "nodemon safehavendao-backend/server.js",
+        "client": "npm run dev --prefix safehavendao-frontend",
+        "build": "npm run build --prefix safehavendao-frontend"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "start": "^5.1.0"
+    },
+    "devDependencies": {
+        "concurrently": "^9.0.1",
+        "nodemon": "^2.0.22"
+    }
+}
