@@ -1,22 +1,25 @@
-const Africastalking = require('africastalking');
+import Africastalking from 'africastalking';
+
+// Initialize Africa's Talking API
 const africastalking = Africastalking({
   apiKey: process.env.AFRICASTALKING_API_KEY,
   username: process.env.AFRICASTALKING_USERNAME
 });
 
+const shortCode = process.env.AFRICASTALKING_SHORTCODE
+
 const sms = africastalking.SMS;
 
-const sendSMSNotification = async (phoneNumber, message) => {
+// Function to send an SMS
+export const sendSMSNotification = async (phoneNumber, message, senderCode=shortCode) => {
   try {
     const response = await sms.send({
       to: [phoneNumber],
+      from: senderCode,
       message: message,
     });
-    console.log(response);
+    console.log('SMS response:', response);
   } catch (error) {
-    console.error(error);
+    console.error('Error sending SMS:', error);
   }
 };
-
-
-module.exports = { sendSMSNotification };
