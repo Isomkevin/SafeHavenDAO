@@ -1,5 +1,5 @@
-const Africastalking = require('africastalking');
-const EnsMapping = require('../models/ensMapping');
+import Africastalking from 'africastalking';
+import EnsMapping from '../models/ensMapping';
 
 // Initialize Africa's Talking
 const africastalking = Africastalking({
@@ -57,4 +57,4 @@ const handleUssd = async (req, res) => {
   res.send(response);
 };
 
-module.exports = { handleUssd };
+export default { handleUssd };
