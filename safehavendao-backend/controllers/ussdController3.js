@@ -1,12 +1,20 @@
 // Importing necessary modules
 import EnsMapping from "../models/ensMapping.js";
+import eventEmitter from '../events/eventEmitter.js'; // Import the event emitter
 
-// Helper function to check ENS mapping
-const checkEnsMapping = async (phoneNumber) => {
+// Function to check ENS mapping
+export const checkEnsMapping = async (phoneNumber) => {
   try {
+    // Check if ENS domain is linked to the phone number
     const mapping = await EnsMapping.findOne({ phoneNumber });
+
     if (mapping) {
-      return `END Your phone number is linked to the ENS domain: ${mapping.ensBasename}`;
+      const ensBasename = mapping.ensBasename;
+      
+      // Emit the 'sendSMS' event to trigger the SMS sending process asynchronously
+      eventEmitter.emit('sendSMS', phoneNumber, `Your phone number is linked to the ENS domain: ${ensBasename}`);
+      
+      return `END Your phone number is linked to the ENS domain: ${ensBasename}`;
     } else {
       return "END No ENS base name is attached to this number.";
     }
@@ -14,6 +22,7 @@ const checkEnsMapping = async (phoneNumber) => {
     return "END Error checking ENS domain. Please try again later.";
   }
 };
+
 
 // Handling USSD request
 export const handleUssd = async (req, res) => {

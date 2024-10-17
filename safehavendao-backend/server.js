@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import ussdRoutes from "./routes/ussdRoutes.js";
+import './events/smsEventListener.js'; // Initialize the SMS event listener
 
 const { urlencoded, json } = bodyParser;
 const { connect } = mongoose;
@@ -51,7 +52,9 @@ connect(mongoUri, {
 
 // Routes
 app.use("/ussd", ussdRoutes);
-app.get("/", (req, res) => res.send("HELLO FROM HOMEPAGE"));
+app.get("/", (req, res) => {
+  res.send("HELLO FROM HOMEPAGE")
+});
 
 // General error handling middleware
 app.use((err, req, res, next) => {
