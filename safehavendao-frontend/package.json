@@ -1,8 +1,9 @@
 {
-  "name": "onchainkit-boilerplate",
+  "name": "safehavendao-frontend onchainkit-boilerplate",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description":"SafeHavenDAO frontend built on OnchainKit",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
