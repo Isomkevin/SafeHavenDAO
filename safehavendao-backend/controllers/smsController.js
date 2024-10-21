@@ -18,8 +18,8 @@ export const sendSMSNotification = async (phoneNumber, message, senderCode=short
       from: senderCode,
       message: message,
     });
-    console.log('SMS response:', response);
+    console.log(`${phoneNumber} SMS response:`, response);
   } catch (error) {
-    console.error('Error sending SMS:', error);
+    console.error(`Error sending SMS to ${phoneNumber}:`, error);
   }
 };

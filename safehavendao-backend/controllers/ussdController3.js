@@ -55,6 +55,6 @@ export const handleUssd = async (req, res) => {
       break;
   }
 
-  console.log(response); // Log response before sending
+  process.env.NODE_ENV === 'development' ? console.log(response) : null; // Log response before sending if in development
   res.send(response);
 };

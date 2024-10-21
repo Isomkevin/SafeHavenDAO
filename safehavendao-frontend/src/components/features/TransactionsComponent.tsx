@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { ChakraProvider, Box, Button } from "@chakra-ui/react";
-import TransactionModal from "../components/features/TransactionModal"; // Adjust import as needed
+import { Box, Button } from "@chakra-ui/react";
+import TransactionModal from "./TransactionModal"; // Adjust import as needed
 
-function App() {
+function TransactionsComponent() {
   const [isDepositOpen, setDepositOpen] = useState(false);
   const [isWithdrawOpen, setWithdrawOpen] = useState(false);
 
@@ -11,7 +11,6 @@ function App() {
   };
 
   return (
-    <ChakraProvider>
       <Box p={4} bg="gray.900" minH="100vh" color="white">
         {/* Buttons to trigger deposit and withdraw modals */}
         <Button
@@ -43,8 +42,7 @@ function App() {
           onConfirm={handleConfirm}
         />
       </Box>
-    </ChakraProvider>
   );
 }
 
-export default App;
+export default TransactionsComponent;

@@ -1,6 +1,6 @@
 
 import { Box, VStack, IconButton, Text, HStack, IconButtonProps } from "@chakra-ui/react";
-import { FiHome, FiSettings, FiShuffle } from "react-icons/fi";
+import { FiHome, FiGitPullRequest, FiCreditCard } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@chakra-ui/react";
@@ -28,8 +28,8 @@ export default function Sidebar() {
     >
       <VStack spacing={5}>
         <SidebarItem to="/" icon={FiHome} label="Home" />
-        <SidebarItem to="/swap" icon={FiShuffle} label="Swap" />
-        <SidebarItem to="/settings" icon={FiSettings} label="Settings" />
+        <SidebarItem to="/wallet" icon={FiCreditCard} label="Wallet" />
+        <SidebarItem to="/settings" icon={FiGitPullRequest} label="Other Services" />
       </VStack>
     </Box>
   );
@@ -77,8 +77,8 @@ function BottomNavbar() {
       zIndex={10}
     >
       <SidebarItem to="/" icon={FiHome} label="Home" />
-      <SidebarItem to="/swap" icon={FiShuffle} label="Swap" />
-      <SidebarItem to="/settings" icon={FiSettings} label="Settings" />
+      <SidebarItem to="/wallet" icon={FiCreditCard} label="Wallet" />
+      <SidebarItem to="/settings" icon={FiGitPullRequest} label="Other Services" />
     </HStack>
   );
 }

@@ -4,12 +4,12 @@ import CommonLayout from "./components/layout/CommonLayout";
 // importing the several views";
 import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
-import SwapPage from "./pages/SwapPage";
+import WalletPage from "./pages/WalletPage";
 import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import AidDistributionPage from "./pages/AidDistributionPage";
 import VotePage from "./pages/VotePage";
-import TransactionPage from "./pages/TransactionPage";
+import TransactionPage from "./components/features/TransactionsComponent";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/swap" element={<SwapPage />} />
+            <Route path="/wallet" element={<WalletPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/aid" element={<AidDistributionPage />} />
