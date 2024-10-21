@@ -1,14 +1,9 @@
 {
-<<<<<<< HEAD
   "name": "safehavendao-frontend",
-=======
-  "name": "safehavendao-frontend",
->>>>>>> 7c6515f47bc164c56070b28015d1ee673143b037
   "private": true,
   "version": "1.0.0",
-  "description": "SafeHavenDAO frontend built on onchainkit template",
+  "description": "SafeHavenDAO frontend built on OnchainKit template",
   "type": "module",
-  "description":"SafeHavenDAO frontend built on OnchainKit",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
